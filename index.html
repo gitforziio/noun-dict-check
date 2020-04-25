@@ -34,6 +34,8 @@
         #page-ctrl>.container>.row>.col>*{margin: 0.25rem 0;}
         .outputbox{font-size: 10px;}
 
+        .card-wrap.done{color: #6c757d; background: #fff; opacity: 0.5;}
+
         .form-control{border: 1px solid #eee;}
         .p-control-sm{margin: 0; padding: .25rem .5rem; font-size: .875rem; line-height: 1.5;}
         .btn_stc_confirm{width: 100%;}
@@ -70,7 +72,7 @@
         </div>
     </div></div>
 
-    <div class="container my-5 py-2 page hiddent" id="page-main"><div class="container card-wrap py-1" v-for="S in Ss">
+    <div class="container my-5 py-2 page hiddent" id="page-main"><div v-for="S in Ss" class="container card-wrap py-1" :class="{'done': S.done ? true : false}">
 
             <div class="row my-1">
                 <div class="col-4 col-lg-3 col-xl-2">
