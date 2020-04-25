@@ -131,7 +131,7 @@ var the_vue = new Vue({
             let j1 = tts.length > 3;
             let j2 = true;
             for (let tt of tts) {
-                if (tt[tt.length-1] != '。' && tt[tt.length-1] != '？' && tt[tt.length-1] != '！') {
+                if (tt[tt.length-1] != '。' && tt[tt.length-1] != '？' && tt[tt.length-1] != '！' && tt[tt.length-1] != '”') {
                     j2 = false;
                 }
             }
