@@ -43,13 +43,14 @@ function md2json(md) {
     let lines = md.split(/[\n\r]+/);
     let jns = [];
     for (let line of lines) {
-        let result = line.match(/^([^ ]+) ?([^ ]+) ?〈([^〉]+)〉 ?([^ ]+)/);
+        let result = line.match(/^([^ ]+) ?([^ ]+) ?〈([^〉 ]+), ?([^〉 ]+)〉 ?([^ ]+)/);
         if (result) {
             jns.push({
                 'word': result[1],
                 'pinyin': result[2],
                 'cat': result[3],
-                'desc': result[4],
+                'attitude': result[4],
+                'desc': result[5],
                 // 'link_1': `http://ccl.pku.edu.cn:8080/ccl_corpus/search?q=${result[1]}&start=0&num=50&index=FullIndex&outputFormat=HTML&encoding=UTF-8&maxLeftLength=30&maxRightLength=30&orderStyle=score&LastQuery=&dir=xiandai&scopestr=`,
                 // 'link_2': `http://ccl.pku.edu.cn:8080/ccl_corpus/pattern?q=%E4%B8%80%28v,1-2%29${result[1]}`,
                 'table': {},
@@ -93,8 +94,20 @@ var the_vue = new Vue({
         Ss: [],
     },
     methods: {
-        toggle_btn: function(evt) {
-        }
+        vv: function(txt) {
+            return txt.split('｜').length < 4;
+        },
+        vvv: function(txt) {
+            let tts = txt.split('｜');
+            let j1 = tts.length > 3;
+            let j2 = true;
+            for (let tt of tts) {
+                if (tt[tt.length-1] != '。') {
+                    j2 = false;
+                }
+            }
+            return !(j1&&j2);
+        },
     },
     created: function() {
         console.log("created");
