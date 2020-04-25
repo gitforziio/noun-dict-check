@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="col-6 col-lg-7 col-xl-8">
-                    <textarea class="form-control form-control-sm" v-model="L.examples" :class="{'is-invalid':L.idx > 4 ? vvv(L.examples) : vv(L.examples)}" :rows="L.idx > 4 ? '2' : '1'" v-if="L.neg+L.match==1 && !S.done"></textarea>
+                    <textarea class="form-control form-control-sm" v-model="L.examples" :class="{'is-invalid':(L.idx != 4 && L.idx != 1) ? vvv(L.examples) : vv(L.examples)}" :rows="(L.idx != 4 && L.idx != 1) ? '2' : '1'" v-if="L.neg+L.match==1 && !S.done"></textarea>
                     <p class="p-control-sm" v-if="L.neg+L.match==1 && S.done">{{ L.examples }}</p>
                 </div>
                 <div class="col-2">
