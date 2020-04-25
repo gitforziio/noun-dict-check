@@ -88,7 +88,34 @@ function md2json(md) {
 var the_vue = new Vue({
     el: '#bodywrap',
     data: {
-        Ss: [],
+        Ss: [{
+                "word": "例子",
+                "pinyin": "example",
+                "cat": "名词类型",
+                "attitude": "积极",
+                "desc": "这里是词语的基本释义，仅供参考。",
+                "table": {
+                    "item_1": {
+                        "idx": "1",
+                        "neg": 0,
+                        "match": 1,
+                        "examples": "一个～｜一些～｜一组～｜一对～",
+                        "notes": "",
+                        "title_origin": "可以受数量词的修饰。（符合：+10分；不符合：0分）",
+                        "title": "受数量词修饰"
+                    },
+                    "item_2": {
+                        "idx": "2",
+                        "neg": 1,
+                        "match": true,
+                        "examples": "",
+                        "notes": "",
+                        "title_origin": "不能受副词的修饰。（符合：+20分；不符合：-20分）",
+                        "title": "不受副词修饰"
+                    }
+                },
+                "done": 1
+            }],
     },
     computed: {
         Ss_len: function() {return this.Ss.length},
