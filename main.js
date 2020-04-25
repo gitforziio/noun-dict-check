@@ -90,6 +90,11 @@ var the_vue = new Vue({
     data: {
         Ss: [],
     },
+    computed: {
+        Ss_len: function() {return this.Ss.length},
+        Ss_done_len: function() {return this.Ss.filter(d => (typeof(d)=='object'?d.done:false)).length},
+        Ss_done_pct: function() {return (this.Ss_len > 0 ? `${(this.Ss_done_len/this.Ss_len)*100}%` : `0`)},
+    },
     methods: {
         vv: function(txt) {
             return txt.split('｜').length < 4;

@@ -23,7 +23,7 @@
 
         /*#box-editing{max-height: 80vh; overflow: auto;}*/
 
-        .card-wrap{background: #fafafa; border: 1px solid #eee; margin: 1rem 0;}
+        .card-wrap{background: #fafafa; border: 1px solid #eee; margin: 1rem 0;transition: all 0.5s;}
         .btn_stc_wrap{margin: 0 0 1rem 0;}
         .textarea-editing,.xml-wrap{margin: 1rem 0;}
         .xml-area-wrap{background: #fff; /*border-bottom: 1px solid #eee;*/}
@@ -39,6 +39,9 @@
         .form-control{border: 1px solid #eee;}
         .p-control-sm{margin: 0; padding: .25rem .5rem; font-size: .875rem; line-height: 1.5;}
         .btn_stc_confirm{width: 100%;}
+        /*.btn-haha{width: 30%;margin-left: auto;}*/
+        .progress-bar{transition: all 0.5s;}
+        .btn{transition: all 0.5s;}
     </style>
 
 
@@ -61,10 +64,17 @@
                         <div class="col-md-8 my-2">
                             <input type="file" class="form-control" name="file-input" id="file-input" name="file" multiple="multiple" accept=".json, .md, .txt" />
                         </div>
-                        <div class="col-md-4 my-2">
+                        <div class="btn-group col-md-4 my-2">
                             <button type="button" name="do_import" id="do_import" class="btn btn-primary">导入</button>
-                            <button type="button" name="do_export" id="do_export" class="btn btn-primary">导出</button>
-                            <button type="button" name="do_toggle" id="do_toggle" class="btn btn-primary">换视</button>
+                            <button type="button" name="do_export" id="do_export" class="btn btn-info">导出</button>
+                            <button type="button" name="do_toggle" id="do_toggle" class="btn btn-secondary">换视</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" :style="`width: ${Ss_done_pct};`" :aria-valuenow="Ss_done_len" aria-valuemin="0" :aria-valuemax="Ss_len">{{ Ss_done_len }}/{{ Ss_len }}</div>
+                            </div>
                         </div>
                     </div>
                 </form>
