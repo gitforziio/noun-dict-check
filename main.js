@@ -10,6 +10,7 @@ function onImport() {
         let nl = file.name.split(".");
         let nt = nl[nl.length-1];
         nl.pop();
+        nl.replace(/\(\d+\)$/, '');
         FILENAME = nl.join('.')+'.json';
         var reader = new FileReader();
         reader.readAsText(file, "utf-8");
