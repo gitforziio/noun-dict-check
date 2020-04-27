@@ -73,7 +73,7 @@ function md2json(md) {
                 'idx': tb_item[1],
                 'neg': neg,
                 'match': mch,
-                'examples': tb_item[5].trim(),
+                'examples': tb_item[5].trim().replace(/\\\|/g, '｜'),
                 'notes': tb_item[6].trim(),
                 'title_origin': title_origin,
                 'title': (TITLEMAP.get(title_origin)) ? TITLEMAP.get(title_origin) : title_origin,
