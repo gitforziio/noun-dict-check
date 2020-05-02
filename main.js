@@ -88,6 +88,7 @@ function md2json(md) {
 var the_vue = new Vue({
     el: '#bodywrap',
     data: {
+        readonly: 0,
         Ss: [{
                 "word": "例子",
                 "pinyin": "example",

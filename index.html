@@ -67,7 +67,7 @@
                         <div class="btn-group col-md-4 my-2">
                             <button type="button" name="do_import" id="do_import" class="btn btn-primary">导入</button>
                             <button type="button" name="do_export" id="do_export" class="btn btn-info">导出</button>
-                            <button type="button" name="do_toggle" id="do_toggle" class="btn btn-secondary">换视</button>
+                            <button type="button" name="do_toggle" id="do_toggle" class="btn btn-secondary" v-on:click="readonly=(1-readonly)">换视</button>
                         </div>
                     </div>
                     <div class="row">
@@ -82,7 +82,53 @@
         </div>
     </div></div>
 
-    <div class="container my-5 py-2 page hiddent" id="page-main"><div v-for="S in Ss" class="container card-wrap py-1" :class="{'done': S.done ? true : false}">
+    <div class="container my-5 py-2 page" id="page-read" :class="{'hidden': readonly ? false : true}"><div v-for="S in Ss" class="container card-wrap py-1">
+
+            <div class="row my-1">
+                <div class="col-4 col-lg-3 col-xl-2">
+                    <div><p class="m0"><strong>{{ S.word }}</strong></p></div>
+                </div>
+                <div class="col-6 col-lg-7 col-xl-8">
+                    <input class="form-control form-control-sm" type="text" :value="`${ S.cat }, ${ S.attitude }`">
+                </div>
+                <div class="col-2"></div>
+            </div>
+
+            <div class="row my-1" v-for="L in S.table">
+                <div class="col-4 col-lg-3 col-xl-2">
+                    <div><p class="m0">{{ L.idx }}）{{ L.title }}</p></div>
+                </div>
+                <div class="col-1">
+                    <p class="p-control-sm">{{ L.match ? '√|' : '' }}</p>
+                </div>
+                <div class="col-1">
+                    <p class="p-control-sm">{{ L.match ? '' : '|√' }}</p>
+                </div>
+                <div class="col-4 col-lg-5 col-xl-6">
+                    <textarea class="form-control form-control-sm" v-model="L.examples" rows="3" v-if="L.neg+L.match==1"></textarea>
+                </div>
+                <div class="col-2">
+                    <textarea class="form-control form-control-sm" v-model="L.notes" rows="3" v-if="L.notes"></textarea>
+                </div>
+            </div>
+
+    </div></div>
+
+    <div class="container my-5 py-2 page" id="page-cats" :class="{'hidden': readonly ? false : true}"><div v-for="S in Ss" class="container card-wrap py-1">
+
+            <div class="row my-1">
+                <div class="col-4 col-lg-3 col-xl-2">
+                    <div><p class="m0"><strong>{{ S.word }}</strong></p></div>
+                </div>
+                <div class="col-6 col-lg-7 col-xl-8">
+                    <input class="form-control form-control-sm" type="text" :value="`${ S.cat }, ${ S.attitude }`">
+                </div>
+                <div class="col-2"></div>
+            </div>
+
+    </div></div>
+
+    <div class="container my-5 py-2 page" id="page-main" :class="{'hidden': readonly ? true : false}"><div v-for="S in Ss" class="container card-wrap py-1" :class="{'done': S.done ? true : false}">
 
             <div class="row my-1">
                 <div class="col-4 col-lg-3 col-xl-2">
